@@ -1,0 +1,11 @@
+# UkisAI build of DocuSeal: the official 3.3.5 image plus the files changed on this branch (see UKISAI.md).
+# Only views and static assets differ from upstream, so they are layered onto the published image
+# instead of rebuilding Ruby gems and JS packs.
+FROM docuseal/docuseal:3.3.5
+
+COPY --chown=docuseal:docuseal app/views /app/app/views
+COPY --chown=docuseal:docuseal public/ukisai /app/public/ukisai
+# Avenir is a licensed typeface, so it is not in this repository; the build pulls UkisAI's hosted copy.
+ADD --chown=docuseal:docuseal https://developers.ukisai.com/assets/fonts/Avenir-Roman.woff2 /app/public/ukisai/fonts/Avenir-Roman.woff2
+ADD --chown=docuseal:docuseal https://developers.ukisai.com/assets/fonts/Avenir-Black.woff2 /app/public/ukisai/fonts/Avenir-Black.woff2
+COPY --chown=docuseal:docuseal public/favicon.ico public/favicon.svg public/favicon-16x16.png public/favicon-32x32.png public/favicon-96x96.png public/apple-touch-icon.png public/apple-touch-icon-precomposed.png public/apple-icon-180x180.png public/logo.svg public/preview.png /app/public/

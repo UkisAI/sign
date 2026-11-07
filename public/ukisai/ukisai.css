@@ -1,0 +1,144 @@
+/* UkisAI theme for DocuSeal (sign.ukisai.com).
+   Same visual system as platform.ukisai.com and developers.ukisai.com: black canvas, Avenir (Roman and
+   Black are the only cuts the brand ships), pill controls, and the brand mosaic on the main action.
+   Tokens are copied from UkisAI/swift-api public/style.css; the mosaic tiles from public/ui.js. */
+
+@font-face { font-family: "Avenir"; src: url("/ukisai/fonts/Avenir-Roman.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Avenir"; src: url("/ukisai/fonts/Avenir-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+
+html[data-theme] {
+  color-scheme: dark;
+  --p: 256.4 85.5% 75.7%;
+  --pf: 256.6 80.4% 70.0%;
+  --pc: 0 0% 0%;
+  --s: 290.4 86.2% 82.9%;
+  --sf: 288.9 82.9% 77.1%;
+  --sc: 0 0% 0%;
+  --a: 205.4 100% 75.9%;
+  --af: 205.3 89.7% 69.4%;
+  --ac: 0 0% 0%;
+  --n: 240 20% 2.9%;
+  --nf: 227.1 30.4% 9%;
+  --nc: 0 0% 100%;
+  --b1: 0 0% 0%;
+  --b2: 240 4.8% 8.2%;
+  --b3: 240 3.4% 11.4%;
+  --bc: 0 0% 92.9%;
+  --in: 205.4 100% 75.9%;
+  --inc: 0 0% 0%;
+  --su: 141.4 61.2% 68.6%;
+  --suc: 0 0% 0%;
+  --wa: 37.8 87.3% 69%;
+  --wac: 0 0% 0%;
+  --er: 0 100% 73.9%;
+  --erc: 0 0% 0%;
+  --rounded-btn: 999px;
+  --btn-text-case: capitalize;
+
+  --uk-line: rgb(255 255 255 / 10%);
+  --uk-line-strong: rgb(255 255 255 / 16%);
+  --uk-text: #ededed;
+  --uk-muted: #b5b5b5;
+  --uk-faint: #8e8e93;
+  --uk-accent: #a98cf6;
+  --uk-field: #2c2c2e;
+  --uk-hover: #1c1c1e;
+  --uk-pill: #060609;
+  --uk-pill-line: #242431;
+
+  font-family: "Avenir", ui-sans-serif, system-ui, sans-serif;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html[data-theme] body { background: #000; color: var(--uk-text); }
+html[data-theme] ::selection { background: #ac2ee7; color: #fff; }
+
+/* Type: Avenir Black for anything bold, tight tracking on headings. */
+html[data-theme] h1, html[data-theme] h2, html[data-theme] h3,
+html[data-theme] .font-bold, html[data-theme] .font-semibold, html[data-theme] .font-medium { font-weight: 900; }
+html[data-theme] h1, html[data-theme] h2, html[data-theme] h3 { letter-spacing: -0.022em; }
+
+/* Buttons: one family. Near-black pill everywhere; the mosaic only on full-width main actions. */
+html[data-theme] .base-button,
+html[data-theme] .white-button,
+html[data-theme] .btn-neutral,
+html[data-theme] .btn-primary {
+  position: relative;
+  border: 1px solid var(--uk-pill-line);
+  border-radius: 999px;
+  background-color: var(--uk-pill);
+  color: #fff;
+  font-weight: 900;
+  text-transform: capitalize;
+  box-shadow: none;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 100ms ease-out;
+}
+html[data-theme] .base-button:hover,
+html[data-theme] .white-button:hover,
+html[data-theme] .btn-neutral:hover,
+html[data-theme] .btn-primary:hover { border-color: #394566; background-color: #10131e; color: #fff; }
+html[data-theme] .base-button:active,
+html[data-theme] .white-button:active { transform: scale(0.985); }
+html[data-theme] .base-button.w-full,
+html[data-theme] .form-control > .base-button {
+  min-height: 52px;
+  background-image:
+    url("/ukisai/mosaic-left.svg"), url("/ukisai/mosaic-right.svg"),
+    radial-gradient(ellipse at bottom left, rgb(132 59 183 / 8%), transparent 50%),
+    radial-gradient(ellipse at top right, rgb(63 126 215 / 8%), transparent 50%);
+  background-repeat: no-repeat;
+  background-position: left center, right center, center, center;
+  box-shadow: inset 0 0 4px 1px #060609;
+}
+html[data-theme] .btn:disabled, html[data-theme] .btn[disabled] { opacity: 0.45; color: #fff; }
+
+/* Inputs: the platform's dark field. */
+html[data-theme] .base-input,
+html[data-theme] .base-textarea,
+html[data-theme] .base-select,
+html[data-theme] .input,
+html[data-theme] .textarea,
+html[data-theme] .select {
+  background-color: var(--uk-field);
+  border-color: transparent;
+  color: var(--uk-text);
+}
+html[data-theme] .base-input::placeholder,
+html[data-theme] .base-textarea::placeholder,
+html[data-theme] .input::placeholder { color: var(--uk-faint); }
+html[data-theme] .base-input:focus,
+html[data-theme] .base-textarea:focus,
+html[data-theme] .base-select:focus,
+html[data-theme] .input:focus,
+html[data-theme] .textarea:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--uk-accent) 60%, transparent);
+  background-color: color-mix(in oklab, #a98cf6 22%, #2c2c2e);
+}
+html[data-theme] .base-checkbox, html[data-theme] .base-radio { background-color: var(--uk-field); border-color: var(--uk-line-strong); }
+
+/* Surfaces that only had a shadow to separate them get a hairline instead (shadows vanish on black). */
+html[data-theme] .modal-box,
+html[data-theme] .dropdown-content,
+html[data-theme] .menu.shadow,
+html[data-theme] .card { border: 1px solid var(--uk-line); box-shadow: none; }
+
+html[data-theme] a.link, html[data-theme] .link { color: var(--uk-accent); }
+html[data-theme] :focus-visible { outline: 2px solid var(--uk-accent); outline-offset: 2px; }
+
+/* No grey panels: cards and rows sit on the black canvas with a hairline. */
+html[data-theme] .card.bg-base-200,
+html[data-theme] .bg-base-200[class*="rounded"]:not(.btn):not(.badge):not(.menu):not(.tab) { background-color: transparent; box-shadow: inset 0 0 0 1px var(--uk-line); }
+html[data-theme] a:hover > .rounded-2xl.bg-base-200,
+html[data-theme] .rounded-2xl.bg-base-200:hover { box-shadow: inset 0 0 0 1px var(--uk-line-strong); }
+
+/* Logged-out home */
+.uk-landing { min-height: 62vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; padding: 0 16px; text-align: center; }
+.uk-landing h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.1; font-weight: 900; letter-spacing: -0.022em; }
+html[data-theme] .uk-landing .base-button { width: 100%; max-width: 340px; font-size: 16px; }
+.uk-landing-foot { padding: 24px 16px 32px; font-size: 13px; color: var(--uk-faint); }
+
+/* Brand marks */
+.uk-wordmark { display: block; height: 44px; width: auto; }
+.uk-mark { display: block; }

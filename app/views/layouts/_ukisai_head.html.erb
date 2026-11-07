@@ -1,0 +1,4 @@
+<%# UkisAI theme (see UKISAI.md). Loaded after DocuSeal's stylesheet. %>
+<% ukisai_css_version = File.mtime(Rails.public_path.join('ukisai/ukisai.css')).to_i rescue 1 %>
+<link rel="stylesheet" href="/ukisai/ukisai.css?v=<%= ukisai_css_version %>">
+<meta name="theme-color" content="#000000">
