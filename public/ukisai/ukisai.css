@@ -139,6 +139,12 @@ html[data-theme] .rounded-2xl.bg-base-200:hover { box-shadow: inset 0 0 0 1px va
 html[data-theme] .uk-landing .base-button { width: 100%; max-width: 340px; font-size: 16px; }
 .uk-landing-foot { padding: 24px 16px 32px; font-size: 13px; color: var(--uk-faint); }
 
+/* Brand lockup, copied from developers.ukisai.com (.brand): wordmark | product name */
+html[data-theme] .uk-brand { display: inline-flex; align-items: center; gap: 10px; }
+html[data-theme] .uk-brand img { display: block; height: 26px; width: auto; }
+html[data-theme] .uk-brand span { padding-left: 10px; border-left: 1px solid rgb(255 255 255 / 16%); color: #b5b5b5; font-size: 15px; line-height: 18px; font-weight: 400; letter-spacing: normal; }
+@media (max-width: 860px) { html[data-theme] .uk-brand img { height: 22px; } }
+
 /* Brand marks */
 .uk-wordmark { display: block; height: 44px; width: auto; }
 .uk-mark { display: block; }

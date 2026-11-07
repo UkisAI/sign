@@ -10,7 +10,7 @@ the same terms, and the DocuSeal attribution is kept in every page that shows it
 - `public/ukisai/`: theme stylesheet, UkisAI logos, mosaic button tiles. Avenir is licensed, so the font files are not
   in this repository; `Dockerfile.ukisai` fetches UkisAI's hosted copy at build time.
 - `app/views/layouts/_ukisai_head.html.erb`, plus one line in the `application`, `plain` and `form` layouts that renders it.
-- Logos and titles: `shared/_logo`, `shared/_title`, `start_form/_docuseal_logo`, `submit_form/_docuseal_logo`,
+- Logos and titles: `shared/_ukisai_brand` (UkisAI | Sign lockup), `shared/_logo`, `shared/_title`, `start_form/_docuseal_logo`, `submit_form/_docuseal_logo`,
   `templates_share_link_qr/_logo`, `layouts/_head_tags`, `shared/_meta`, `pwa/manifest.json`.
 - `shared/_powered_by`: keeps "Powered by DocuSeal" and adds a link to this source code.
 - `pages/landing`: a short UkisAI home page in place of the DocuSeal product page.
