@@ -91,6 +91,18 @@ html[data-theme] .form-control > .base-button {
   background-position: left center, right center, center, center;
   box-shadow: inset 0 0 4px 1px #060609;
 }
+/* Plain daisyUI buttons default to a grey fill; bring them into the pill family. */
+html[data-theme] .btn:not(.btn-ghost):not(.btn-link):not(.btn-outline):not(.btn-circle):not(.btn-square):not(.btn-error):not(.btn-active):not(.join-item) {
+  background-color: var(--uk-pill);
+  border-color: var(--uk-pill-line);
+  color: #fff;
+}
+html[data-theme] .btn-outline { color: var(--uk-text); border-color: var(--uk-line-strong); }
+html[data-theme] .btn-outline:hover { background-color: #10131e; border-color: #394566; color: #fff; }
+html[data-theme] .btn:not(.btn-ghost):not(.btn-link):not(.btn-outline):not(.btn-circle):not(.btn-square):not(.btn-error):not(.btn-active):not(.join-item):hover {
+  background-color: #10131e;
+  border-color: #394566;
+}
 html[data-theme] .btn:disabled, html[data-theme] .btn[disabled] { opacity: 0.45; color: #fff; }
 
 /* Inputs: the platform's dark field. */
@@ -132,6 +144,39 @@ html[data-theme] .card.bg-base-200,
 html[data-theme] .bg-base-200[class*="rounded"]:not(.btn):not(.badge):not(.menu):not(.tab) { background-color: transparent; box-shadow: inset 0 0 0 1px var(--uk-line); }
 html[data-theme] a:hover > .rounded-2xl.bg-base-200,
 html[data-theme] .rounded-2xl.bg-base-200:hover { box-shadow: inset 0 0 0 1px var(--uk-line-strong); }
+
+/* DocuSeal's Vue apps (template builder) paint the old theme's beige inline via a backgroundColor prop, and fall back
+   to inline white for some menus. Inline styles beat classes, so match the value and return it to the canvas. */
+html[data-theme] [style*="background-color: rgb(250, 247, 245)"],
+html[data-theme] [style*="background-color: white"] { background-color: #000 !important; }
+
+/* A few DocuSeal icons hardcode a black stroke instead of currentColor; make them follow the text colour. */
+html[data-theme] svg[stroke="#000000"], html[data-theme] svg[stroke="#000"],
+html[data-theme] svg [stroke="#000000"], html[data-theme] svg [stroke="#000"] { stroke: currentColor; }
+
+/* The builder's DocuSeal logo is compiled into its JS; swap it for the UkisAI mark from CSS. */
+html[data-theme] a:has(> svg[viewBox="0 0 180 180"]) {
+  display: block; width: 40px; height: 40px; flex: none;
+  background: url("/ukisai/mark.svg") center / contain no-repeat;
+}
+html[data-theme] a > svg[viewBox="0 0 180 180"] { visibility: hidden; }
+
+/* DocuSeal uses daisyUI "neutral" and Tailwind greys as *text* colours, tuned for a light page. On black they need
+   the brand's light greys. (!text-neutral is Tailwind's important variant, hence !important.) */
+html[data-theme] .text-neutral, html[data-theme] .\!text-neutral { color: var(--uk-muted) !important; }
+html[data-theme] .text-gray-900, html[data-theme] .text-gray-800, html[data-theme] .text-neutral-900,
+html[data-theme] .text-neutral-800 { color: var(--uk-text); }
+html[data-theme] .text-gray-700, html[data-theme] .text-gray-600, html[data-theme] .text-neutral-700,
+html[data-theme] .text-neutral-600 { color: var(--uk-muted); }
+html[data-theme] .text-gray-500, html[data-theme] .text-neutral-500 { color: var(--uk-faint); }
+
+/* Status badges are a half-transparent tint with black text; on black that turns murky, so make the tint solid. */
+html[data-theme] .badge.bg-opacity-50 { --tw-bg-opacity: 1; }
+
+/* Avatar: a pill chip instead of a near-white circle with lilac initials. */
+html[data-theme] label.bg-base-content.rounded-full {
+  background-color: var(--uk-pill); border: 1px solid var(--uk-pill-line); color: #f5f5f7;
+}
 
 /* Logged-out home */
 .uk-landing { min-height: 62vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; padding: 0 16px; text-align: center; }
